@@ -1,0 +1,159 @@
+/* ══════════ 可改区：改完保存立即生效 ══════════ */
+
+.workspace-leaf-content[data-type="markdown"] {
+  /* 标注卡圆角，默认跟随全局圆角（在「颜色地基」里改） */
+  --ca-radius: var(--ct-card-radius, 8px);
+
+  /* 标注卡标题里主题色的比例：70 越大越艳，0 是纯墨 */
+  --ca-title-mix: 70%;
+
+  /* 标注卡底色浓度：20 越大颜色越明显 */
+  --ca-bg-mix: 20%;
+
+  --callout-radius: var(--ca-radius);
+
+  /* 表头线深浅 */
+  --ct-table-head-line: color-mix(in srgb, var(--ct-ink, var(--text-normal)) 24%, transparent);
+
+  /* 行与行之间的线深浅 */
+  --ct-table-row-line: color-mix(in srgb, var(--ct-ink, var(--text-normal)) 18%, transparent);
+
+  /* 单元格上下的留白 */
+  --ct-table-row-pad: 7px;
+
+  /* 单元格对齐：left / center / right */
+  --ct-table-align: center;
+
+  /* 列的最小宽度 */
+  --ct-table-col-min: 6ch;
+  --table-column-min-width: var(--ct-table-col-min);
+}
+
+/* 属性面板（笔记底部的那块）：标签列宽、行高、文字颜色 */
+body:not(.is-mobile) {
+  --pt-label-width: 9.5em;
+
+  --pt-row-height: calc(var(--font-text-size) * 1.5);
+
+  --pt-label-color: var(--text-faint);
+}
+
+.workspace-leaf-content[data-type="markdown"] .callout {
+  --callout-title-color: color-mix(
+    in srgb,
+    var(--callout-color, var(--interactive-accent)) var(--ca-title-mix),
+    var(--text-normal, var(--text-muted))
+  );
+
+  background-color: color-mix(
+    in srgb,
+    var(--callout-color, var(--interactive-accent)) var(--ca-bg-mix),
+    var(--ct-card-bg, var(--background-primary))
+  );
+}
+
+.workspace-leaf-content[data-type="markdown"] {
+  --table-border-color: var(--ct-rule, color-mix(in srgb, var(--text-normal) 12%, transparent));
+  --table-header-color: var(--ct-ink, var(--text-normal));
+  --table-background: transparent;
+  --table-border-width: 0px;
+
+  --table-header-border-width: 0px;
+  --table-header-border-color: var(--ct-rule, color-mix(in srgb, var(--text-normal) 12%, transparent));
+  --table-column-first-border-width: 0px;
+  --table-column-last-border-width: 0px;
+  --table-row-last-border-width: 0px;
+
+  --table-add-button-border-width: 1px;
+  --table-add-button-border-color: var(--ct-rule, color-mix(in srgb, var(--text-normal) 12%, transparent));
+}
+
+.workspace-leaf-content[data-type="markdown"]
+  :is(.markdown-rendered, .cm-table-widget) table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-variant-numeric: lining-nums tabular-nums;
+  background-color: var(--ct-card-bg, color-mix(in srgb, var(--background-primary) 55%, transparent));
+  border-radius: var(--ct-card-radius, 8px);
+  padding-block: var(--ct-card-pad, 12px);
+  padding-inline: 0;
+}
+
+.workspace-leaf-content[data-type="markdown"]
+  :is(.markdown-rendered, .cm-table-widget)
+  table > :first-child > tr:first-child > :is(th, td) {
+  border-bottom: 1px solid var(--ct-table-head-line);
+}
+
+.workspace-leaf-content[data-type="markdown"]
+  :is(.markdown-rendered, .cm-table-widget)
+  table tbody tr + tr > td {
+  border-top: 1px solid var(--ct-table-row-line);
+}
+
+.workspace-leaf-content[data-type="markdown"]
+  :is(.markdown-rendered, .cm-table-widget)
+  table :is(th, td) {
+  padding-block: var(--ct-table-row-pad);
+}
+.workspace-leaf-content[data-type="markdown"]
+  :is(.markdown-rendered, .cm-table-widget)
+  table .table-cell-wrapper {
+  padding-block: var(--ct-table-row-pad);
+}
+
+.workspace-leaf-content[data-type="markdown"]
+  :is(.markdown-rendered, .cm-table-widget)
+  table :is(th, td):not([align]) {
+  text-align: var(--ct-table-align, center);
+}
+
+.workspace-leaf-content[data-type="markdown"] {
+  --ct-emb-bg: var(--ct-card-bg, color-mix(in srgb, var(--background-primary) 55%, transparent));
+  --ct-emb-radius: var(--ct-card-radius, 8px);
+  --ct-emb-pad: var(--ct-card-pad, 12px);
+}
+
+.workspace-leaf-content[data-type="markdown"] .markdown-embed {
+  --embed-background: var(--ct-emb-bg);
+  --embed-border-start: none;
+  --embed-padding: 0;
+
+  border-radius: var(--ct-emb-radius);
+
+  padding: var(--ct-emb-pad) calc(var(--ct-emb-pad) + var(--size-4-1, 4px));
+}
+
+.workspace-leaf-content[data-type="markdown"] .mermaid {
+  background: var(--ct-card-bg, var(--background-secondary));
+  border: var(--ct-card-border-width, 0px) solid var(--ct-card-border-color, transparent);
+  border-radius: var(--ct-card-radius, 8px);
+  padding: var(--ct-card-pad, 12px);
+}
+
+body:not(.is-mobile) .workspace-leaf-content[data-type="markdown"] .metadata-container {
+  --pt-card-bg: var(--ct-card-bg, color-mix(in srgb, var(--background-primary) 55%, transparent));
+  --pt-card-pad: var(--ct-card-pad, 12px);
+  --pt-card-radius: var(--ct-card-radius, 8px);
+  --pt-card-border-width: var(--ct-card-border-width, 0px);
+  --pt-card-border-color: var(--ct-card-border-color, color-mix(in srgb, var(--text-normal) 12%, transparent));
+
+  --metadata-label-width: var(--pt-label-width);
+  --metadata-input-height: var(--pt-row-height);
+  --metadata-label-text-color: var(--pt-label-color);
+
+  --metadata-background: var(--pt-card-bg);
+  --metadata-padding: var(--pt-card-pad);
+  --metadata-border-radius: var(--pt-card-radius);
+  --metadata-border-width: var(--pt-card-border-width);
+  --metadata-border-color: var(--pt-card-border-color);
+
+  transform: translateX(
+    calc((var(--size-4-1) + var(--pt-card-pad)) * -1 * var(--direction))
+  );
+}
+
+body:not(.is-mobile):not(.is-translucent):not(.is-popout-window)
+  .workspace-leaf-content[data-type="markdown"] .metadata-container {
+  --pt-card-bg: var(--ct-card-bg, color-mix(in srgb, var(--background-primary) 95%, var(--mono-100)));
+}

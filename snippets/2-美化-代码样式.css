@@ -1,0 +1,62 @@
+/* ══════════ 可改区：改完保存立即生效 ══════════ */
+
+.workspace-leaf-content[data-type="markdown"] {
+  /* 行内代码底色深浅：7 越大越深 */
+  --ic-bg: color-mix(in srgb, var(--ct-ink, var(--text-normal)) 7%, transparent);
+
+  /* 行内代码圆角 */
+  --ic-radius: 4px;
+}
+
+/* 语法色板（浅色模式），色值取自 GitHub，想换风格就整块替换 */
+html .workspace-leaf-content[data-type="markdown"] {
+  --code-keyword: #cf222e;
+  --code-operator: #cf222e;
+  --code-string: #0a3069;
+  --code-value: #0550ae;
+  --code-function: #6639ba;
+  --code-property: #953800;
+  --code-tag: #116329;
+  --code-comment: #57606a;
+  --code-important: #82071e;
+
+  --code-punctuation: var(--ct-ink, var(--text-normal));
+}
+
+/* 语法色板（深色模式），同样取自 GitHub */
+html .theme-dark .workspace-leaf-content[data-type="markdown"] {
+  --code-keyword: #ff7b72;
+  --code-operator: #ff7b72;
+  --code-string: #a5d6ff;
+  --code-value: #79c0ff;
+  --code-function: #d2a8ff;
+  --code-property: #ffa657;
+  --code-tag: #7ee787;
+  --code-comment: #8b949e;
+  --code-important: #ffa198;
+}
+
+.workspace-leaf-content[data-type="markdown"] .markdown-rendered :not(pre) > code,
+.workspace-leaf-content[data-type="markdown"] .cm-s-obsidian .cm-inline-code {
+  background: var(--ic-bg);
+  border-radius: var(--ic-radius);
+  padding: 0.1em 0.35em;
+}
+
+.workspace-leaf-content[data-type="markdown"] .cm-s-obsidian .templater-inline {
+  background-color: var(--ic-bg);
+  border-radius: var(--ic-radius);
+  padding: 0.1em 0.35em;
+}
+
+.workspace-leaf-content[data-type="markdown"] .cm-s-obsidian .templater-command-bg,
+.workspace-leaf-content[data-type="markdown"] .cm-s-obsidian .templater-inline .cm-templater-command {
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.workspace-leaf-content[data-type="markdown"] .cm-s-obsidian .templater-inline .cm-templater-command,
+.workspace-leaf-content[data-type="markdown"] .cm-s-obsidian .templater-inline .cm-templater-command span {
+  color: var(--ct-ink, var(--text-normal));
+  font-weight: normal;
+}

@@ -1,0 +1,67 @@
+/* ══════════ 可改区：改完保存立即生效 ══════════
+   这是全库的地基，别的片段都在引用这里的变量。
+   正文字号在 设置 → 外观 → 字体大小 里调，主题色在 设置 → 外观 里调。
+   ═══════════════════════════════ */
+
+.workspace-leaf-content[data-type="markdown"] {
+  /* 墨色起点，一般不动 */
+  --ct-ink: var(--text-normal);
+
+  --ct-ink-deep: color-mix(in srgb, var(--ct-ink) 72%, var(--mono-100));
+
+  --ct-ink-soft: var(--text-muted);
+
+  --ct-ink-faint: var(--text-faint);
+
+  --ct-accent: var(--interactive-accent);
+
+  /* 卡片底色：55 是背景保留量。半透明界面开着时调它，越小越透 */
+  --ct-card-bg: color-mix(in srgb, var(--background-primary) 55%, transparent);
+
+  /* 全局圆角：卡片、代码块、表格、嵌入、属性面板共用 */
+  --ct-card-radius: 8px;
+  --ct-card-border-width: 0px;
+  --ct-card-border-color: var(--ct-rule);
+
+  /* 卡片内边距 */
+  --ct-card-pad: 12px;
+
+  /* 高亮浓度：26 越大越艳 */
+  --ct-mark-bg: color-mix(in srgb, var(--ct-accent) 26%, transparent);
+
+  --ct-structure: var(--ct-ink);
+
+  /* 分割线深浅 */
+  --ct-hairline: color-mix(in srgb, var(--ct-structure) 10%, transparent);
+
+  /* 表格边线深浅 */
+  --ct-rule: color-mix(in srgb, var(--ct-structure) 12%, transparent);
+
+  --bold-color: var(--ct-ink);
+  --italic-color: var(--ct-ink-soft);
+
+  --code-background: var(--ct-card-bg);
+  --code-radius: var(--ct-card-radius);
+  --code-border-color: var(--ct-card-border-color);
+
+  --highlight-background: var(--ct-mark-bg);
+
+  --hr-color: var(--ct-hairline);
+  --hr-thickness: 1px;
+
+  --footnote-id-color: var(--ct-ink-faint);
+}
+
+body:not(.is-translucent):not(.is-popout-window)
+  .workspace-leaf-content[data-type="markdown"] {
+  --ct-card-bg: color-mix(in srgb, var(--background-primary) 95%, var(--mono-100));
+}
+
+.workspace-leaf-content[data-type="markdown"] .markdown-rendered code,
+.workspace-leaf-content[data-type="markdown"] .cm-s-obsidian .cm-inline-code {
+  --code-radius: var(--radius-s);
+}
+
+body.is-mac {
+  -webkit-font-smoothing: antialiased;
+}

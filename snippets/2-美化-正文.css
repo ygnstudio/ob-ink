@@ -1,0 +1,157 @@
+/* ══════════ 可改区：改完保存立即生效 ══════════
+   正文字号在 设置 → 外观 → 字体大小 里调，不在这里。
+   ═══════════════════════════════ */
+
+body {
+  /* 标题的主题色浓度总开关：0 是全墨，1 是按主题色逐级退档 */
+  --ct-h-theme: 1;
+
+  /* 高亮浓度：24 越大越艳 */
+  --hl-wash: color-mix(in srgb, var(--interactive-accent, #8a5cf5) 24%, transparent);
+
+  /* 正文行距：建议 1.55 到 1.65 */
+  --rr-line-height: 1.6;
+
+  /* 段落之间的间距 */
+  --rr-para-gap: 1.1rem;
+
+  /* 表格行距：建议 1.40 到 1.45 */
+  --rr-table-line-height: 1.45;
+
+  /* 链接下划线深浅 */
+  --rr-link-underline: color-mix(in srgb, var(--ct-ink, var(--text-normal)) 35%, transparent);
+}
+
+.workspace-leaf-content[data-type="markdown"] {
+  /* 下面六行是各级标题的墨色配比，动了总开关后一般不用再动 */
+  --h1-color: color-mix(in srgb, var(--ct-accent, var(--interactive-accent)) calc(100% * var(--ct-h-theme)), var(--ct-ink-deep, var(--text-normal)));
+  --h2-color: color-mix(in srgb, var(--ct-accent, var(--interactive-accent)) calc(70% * var(--ct-h-theme)), var(--ct-ink-deep, var(--text-normal)));
+  --h3-color: color-mix(in srgb, var(--ct-accent, var(--interactive-accent)) calc(60% * var(--ct-h-theme)), var(--ct-ink, var(--text-normal)));
+  --h4-color: color-mix(in srgb, var(--ct-accent, var(--interactive-accent)) calc(50% * var(--ct-h-theme)), var(--ct-ink, var(--text-normal)));
+  --h5-color: color-mix(in srgb, var(--ct-accent, var(--interactive-accent)) calc(40% * var(--ct-h-theme)), var(--ct-ink, var(--text-normal)));
+  --h6-color: color-mix(in srgb, var(--ct-accent, var(--interactive-accent)) calc(30% * var(--ct-h-theme)), var(--ct-ink, var(--text-normal)));
+
+  /* 引用缩进 */
+  --bq-indent: 1.5em;
+
+  --blockquote-border-thickness: 0px;
+  --blockquote-border-color: transparent;
+  --blockquote-color: var(--ct-ink-soft, var(--text-muted));
+  --blockquote-background-color: transparent;
+
+  /* 图片圆角 */
+  --image-radius: 8px;
+
+  /* 标签底色浓度：平时 14，悬停 26 */
+  --tg-tint: 14%;
+
+  --tg-tint-hover: 26%;
+
+  /* 首行缩进：不想要缩进就改成 0em */
+  --ind-size: 2em;
+
+  /* 五级和六级标题的行距 */
+  --h5-line-height: 1.4;
+  --h6-line-height: 1.4;
+
+  --p-spacing: var(--rr-para-gap);
+
+  --line-height-normal: var(--rr-line-height);
+  --table-line-height: var(--rr-table-line-height);
+}
+
+.markdown-rendered mark,
+.cm-s-obsidian .cm-highlight {
+  background: var(--hl-wash);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0.05em 0.12em;
+}
+
+.markdown-rendered p:has(> .internal-embed.image-embed) {
+  text-align: center;
+}
+
+.workspace-leaf-content[data-type="markdown"] {
+  --lt-check-border: color-mix(
+    in srgb,
+    var(--text-muted, var(--text-normal)) 45%,
+    var(--text-faint, var(--text-muted))
+  );
+
+  --lt-check-border-hover: var(--text-normal);
+
+  --checkbox-border-color: var(--lt-check-border);
+  --checkbox-border-color-hover: var(--lt-check-border-hover);
+
+  --indentation-guide-color: color-mix(
+    in srgb,
+    var(--ct-ink, var(--text-normal)) 12%,
+    transparent
+  );
+  --indentation-guide-color-active: color-mix(
+    in srgb,
+    var(--ct-ink, var(--text-normal)) 30%,
+    transparent
+  );
+}
+
+.workspace-leaf-content[data-type="markdown"] .markdown-rendered ol,
+.workspace-leaf-content[data-type="markdown"] .cm-s-obsidian ol.HyperMD-list-line {
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.workspace-leaf-content[data-type="markdown"] {
+  --tag-background: color-mix(
+    in srgb,
+    var(--interactive-accent, var(--text-accent)) var(--tg-tint),
+    transparent
+  );
+  --tag-background-hover: color-mix(
+    in srgb,
+    var(--interactive-accent, var(--text-accent)) var(--tg-tint-hover),
+    transparent
+  );
+}
+
+.cm-hashtag {
+  white-space: nowrap;
+}
+
+.cm-hashtag.cm-hashtag-begin::after {
+  content: '\2060';
+}
+
+a.tag {
+  white-space: nowrap;
+}
+
+.workspace-leaf-content[data-type="markdown"] .markdown-rendered blockquote {
+  margin-inline: var(--bq-indent, 1.5em);
+  padding-inline: 0;
+}
+
+.workspace-leaf-content[data-type="markdown"]
+  .markdown-rendered a:not(.is-unresolved) {
+  text-decoration-color: var(--rr-link-underline);
+}
+
+.workspace-leaf-content[data-type="markdown"]
+  .cm-s-obsidian :is(.cm-link, .cm-hmd-internal-link, .cm-url):not(.is-unresolved) {
+  text-decoration-color: var(--rr-link-underline);
+}
+
+.workspace-leaf-content[data-type="markdown"]
+  .markdown-rendered
+  > p:not(:has(> :is(img, svg, .internal-embed, .mermaid, .pdf-embed, .math-block, .math-display))) {
+  text-indent: var(--ind-size, 2em);
+}
+
+/* 中西文之间自动加空格，Obsidian 默认是关的，这条不能删 */
+body {
+  text-autospace: normal;
+}
+
+:is(.markdown-rendered pre, .cm-s-obsidian .HyperMD-codeblock) {
+  text-autospace: no-autospace;
+}

@@ -1,0 +1,42 @@
+/* ══════════ 可改区（需开启半透明界面）══════════ */
+
+body.is-translucent {
+  /* 当前页签描边颜色：可填任意颜色，比如 #ff6600 */
+  --tt-tab-ring-color: var(--interactive-accent);
+
+  /* 描边粗细 */
+  --tt-tab-ring-width: 1px;
+
+  /* 当前页签底色：背景的保留量，越小越透 */
+  --tt-tab-bg: 55%;
+
+  /* 悬停页签底色 */
+  --tt-tab-bg-hover: 35%;
+
+  --tab-background-active: transparent;
+}
+
+html body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal)
+  .workspace-split.mod-root .workspace-tab-header-container
+  .workspace-tab-header.is-active {
+  box-shadow: inset 0 0 0 var(--tt-tab-ring-width) var(--tt-tab-ring-color) !important;
+  background-color: color-mix(in srgb, var(--background-primary) var(--tt-tab-bg), transparent) !important;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+html body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal)
+  .workspace-split.mod-root .workspace-tab-header-container
+  .workspace-tab-header:not(.is-active):hover {
+  background-color: color-mix(in srgb, var(--background-primary) var(--tt-tab-bg-hover), transparent) !important;
+  border-radius: 999px;
+}
+
+html body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal)
+  .workspace-split.mod-root .workspace-tab-header-container
+  .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
+html body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal)
+  .workspace-split.mod-root .workspace-tab-header-container
+  .workspace-tab-header:not(.is-active).mobile-tap .workspace-tab-header-inner {
+  background-color: transparent !important;
+}

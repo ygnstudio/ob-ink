@@ -1,0 +1,118 @@
+/* ══════════ 可改区 ══════════
+   需先在 设置 → 外观 里打开半透明窗口，改完保存立即生效。
+   ═══════════════════════════ */
+
+body.is-translucent {
+  /* 深色模式：玻璃后面的垫层浓度，越大越不透，建议 60 到 80 */
+  --tt-scrim: color-mix(in srgb, var(--background-primary) 70%, transparent);
+
+  --workspace-background-translucent: var(--tt-scrim);
+}
+
+body.is-translucent.theme-light {
+  /* 浅色模式：垫层浓度。接近 0 几乎全透，太大会发灰 */
+  --tt-scrim: color-mix(in srgb, var(--background-primary) 5%, transparent);
+}
+
+body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal) :is(
+  .workspace,
+  .workspace-split,
+  .workspace-tabs,
+  .workspace-tab-container,
+  .workspace-tabs .workspace-leaf,
+  .workspace-leaf,
+  .workspace-leaf-content
+) {
+  background-color: transparent !important;
+}
+
+body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal) :is(
+  .view-header,
+  .view-content,
+  .markdown-reading-view,
+  .markdown-source-view,
+  .cm-editor,
+  .cm-scroller,
+  .cm-gutters,
+  .markdown-preview-view
+) {
+  background-color: transparent !important;
+}
+
+body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal) :is(
+  .workspace-tab-header-container,
+  .workspace-tab-header-container-inner,
+  .workspace-tab-header:not(.is-active)
+) {
+  background-color: transparent !important;
+}
+
+body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal) :is(
+  .titlebar,
+  .workspace-ribbon,
+  .sidebar-toggle-button,
+  .mod-left-split,
+  .mod-right-split,
+  .mod-sidedock,
+  .workspace-sidedock-vault-profile,
+  .status-bar
+) {
+  background-color: transparent !important;
+}
+
+body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal)
+  .workspace-ribbon.mod-left::before {
+  background-color: transparent !important;
+}
+
+body.is-translucent {
+  --tab-outline-width: 0px;
+
+  --tab-divider-color: transparent;
+
+  --status-bar-border-width: 0px;
+
+  --file-header-border: none;
+
+  --titlebar-border-width: 0px;
+}
+
+body.is-translucent .workspace-leaf-resize-handle,
+body.is-translucent .workspace-ribbon,
+body.is-translucent .workspace-ribbon.mod-primary.is-collapsed {
+  border-color: transparent;
+}
+
+body.is-translucent {
+  --tab-background-active: transparent;
+}
+
+body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal)
+  .workspace-split.mod-root .workspace-tab-header-container
+  .workspace-tab-header-inner-title,
+body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal)
+  .workspace-split.mod-root .workspace-tab-header-container
+  .workspace-tab-header-inner-icon {
+  transition: color var(--anim-duration-fast, 160ms)
+    var(--anim-motion-smooth, cubic-bezier(0.25, 1, 0.5, 1));
+}
+
+body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal)
+  .workspace-split.mod-root .workspace-tab-header-container
+  .workspace-tab-header:not(.is-active):hover :is(
+  .workspace-tab-header-inner-title,
+  .workspace-tab-header-inner-icon
+) {
+  color: var(--tab-text-color-focused-active-current, var(--text-normal)) !important;
+}
+
+body.is-translucent .workspace-tab-header-new-tab .clickable-icon:hover {
+  color: var(--text-normal) !important;
+}
+
+body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal) :is(
+  .workspace-fake-target-overlay,
+  .workspace-fake-target-overlay .workspace-tabs .workspace-leaf
+) {
+  background-color: var(--background-primary) !important;
+}

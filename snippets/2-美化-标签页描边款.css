@@ -1,0 +1,17 @@
+/* ══════════ 可改区（需开启半透明界面）══════════ */
+
+body.is-translucent {
+  /* 当前页签描边颜色：可填任意颜色，比如 #ff6600 */
+  --tt-tab-ring-color: var(--interactive-accent);
+
+  /* 描边粗细 */
+  --tt-tab-ring-width: 1px;
+
+  --tab-background-active: transparent;
+}
+
+body.is-translucent:not(.is-fullscreen):not(.is-popout-window):not(.is-popout-modal)
+  .workspace-split.mod-root .workspace-tab-header-container
+  .workspace-tab-header.is-active {
+  box-shadow: 0 0 0 var(--tt-tab-ring-width) var(--tt-tab-ring-color) !important;
+}

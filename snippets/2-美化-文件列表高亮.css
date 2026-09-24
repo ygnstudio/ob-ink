@@ -1,0 +1,24 @@
+/* ══════════ 可改区：改完保存立即生效 ══════════ */
+
+.nav-files-container {
+  /* 选中项底色浓度：20 越大越明显 */
+  --fl-tint: 20%;
+
+  /* 选中项字重：400 常规，500 中等，700 加粗 */
+  --fl-weight: 500;
+
+  /* 选中项文字里主题色的比例：50 越大越偏主题色，0 是纯墨 */
+  --fl-ink-mix: 50%;
+
+  --nav-item-background-active: color-mix(
+    in srgb,
+    var(--interactive-accent, var(--text-normal)) var(--fl-tint),
+    transparent
+  );
+  --nav-item-color-active: color-mix(
+    in srgb,
+    var(--interactive-accent, var(--text-normal)) var(--fl-ink-mix),
+    var(--text-normal, var(--text-muted, white))
+  );
+  --nav-item-weight-active: var(--fl-weight);
+}
